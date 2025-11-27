@@ -22,16 +22,13 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","description":"WWW 2026 Workshop - Trustworthy Foundation Models for Web Intelligence: Causal Perspectives and Challenges","headline":"WWW 2026 Workshop - Trustworthy Foundation Models for Web Intelligence: Causal Perspectives and Challenges","image":"https://www-tfm-causal.github.io/www2026-workshop/images/logo.png","name":"WWW 2026 Workshop - Trustworthy Foundation Models for Web Intelligence: Causal Perspectives and Challenges","url":"https://www-tfm-causal.github.io/www2026-workshop/"}</script>
 <!-- End Jekyll SEO tag -->
+ <link rel="icon" href="data:,">
 <link rel="stylesheet" href="./index_files/style.css"><link rel="stylesheet" href="./index_files/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous">
 <link rel="stylesheet" href="./index_files/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous">
     <link rel="stylesheet" href="./index_files/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous">
-    <script src="./index_files/katex.min.js.下载" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
-    <script src="./index_files/auto-render.min.js.下载" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
-    <script src="./index_files/MathJax.js.下载" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script><style type="text/css">.MathJax_Preview {color: #888}
-#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
-#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
-.MathJax_Error {color: #CC0000; font-style: italic}
-</style>
+    <script src="./index_files/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="./index_files/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js" crossorigin="anonymous"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         renderMathInElement( document.body, {
@@ -622,8 +619,174 @@ window.onload = wrap_img;
 #MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
 #MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
 #MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
-</style></head>
-<body><div id="MathJax_Message" style="display: none;"></div><header class="site-header">
+</style>
+<style>
+
+   /* 顶部全屏 hero（文档流，页面向下滚动会离开） */
+   .site-hero {
+     width: 100%;
+     height: 100vh;            /* 占满一个视口高度 */
+     position: relative;       /* 文档流中的块 */
+     overflow: hidden;
+     display: block;
+     background: #000;         /* 加载前背景色 */
+   }
+   .site-hero img {
+     position: absolute;
+     inset: 0;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;        /* 保持比例并裁切以填满 */
+     object-position: center;
+     display: block;
+     z-index: 0;
+   }
+   /* 在图片之上的文案容器（垂直居中）*/
+   .cover-top {
+     position: relative; /* 在文档流里（non-fixed）*/
+     z-index: 2;         /* 高于图片 */
+     width: 100%;
+     height: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding: 24px;
+     box-sizing: border-box;
+     pointer-events: none; /* 让下滚操作更流畅 */
+   }
+   .cover-top .cover-text {
+     pointer-events: auto; /* 需要交互时打开 */
+     max-width: 1800px;
+     width: calc(100% - 48px);
+     background: rgba(0,0,0,0.5);
+     color: #fff;
+     padding: 36px;
+     border-radius: 8px;
+     text-align: center;
+     box-shadow: 0 12px 40px rgba(0,0,0,.45);
+     backdrop-filter: blur(2px);
+   }
+   .cover-top .cover-text h1 { margin:0 0 12px; font-size: clamp(28px,4vw,58px); line-height:1.05; }
+   .cover-top .cover-text h3 { margin:6px 0; font-size: clamp(16px,2vw,36px); font-weight:600; }
+   @media (max-width:720px) {
+     .cover-top .cover-text { padding: 20px; }
+     .cover-top .cover-text h1 { font-size: 26px; }
+   }
+    /* 提高 header / main / footer 层的 z-index 使其在背景之上 */
+    header.site-header,
+    main.page-content,
+    footer.site-footer {
+      position: relative;
+      z-index: 5;
+    }
+  </style>
+
+<!-- 等待封面图片加载再展示页面 - preload -->
+<style>
+  /* 全屏预加载遮罩（白底） */
+  #preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff; /* 改为白底 */
+    transition: opacity .45s ease, visibility .45s;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+  #preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  /* 使用 svg 图（居中、大小可调） */
+  #preloader img#preloader-svg {
+    width: 120px;
+    height: 120px;
+    display: block;
+    object-fit: contain;
+  }
+</style>
+
+</head>
+<body>
+
+<!-- 页面进入前的遮罩：等 hero 图片加载完再 fade out -->
+<div id="preloader" aria-hidden="false">
+  <!-- 使用 loading.svg 循环播放（JS 会周期性重载以保证动画/播放重置） -->
+  <img id="preloader-svg" src="./images/loading.svg" alt="loading" aria-hidden="true">
+</div>
+
+<!-- 文档流中的全屏 hero：图片 + 文字层（打开页面时可见，向下滚动会离开） -->
+<section class="site-hero" aria-hidden="false">
+  <img src="images/cover.jpg" alt="Dubai_photo">
+  <div class="cover-top" aria-hidden="false">
+    <div class="cover-text" role="banner">
+      <h1 class="h1_home">Trustworthy Foundation Models for Web Intelligence: Causal Perspectives and Challenges</h1>
+      <h3 class="h3_home" style="color:#fff;">
+        Time<a style="color:#2476f1"><sup>†</sup></a>: April 13-14, 2026<br>Location: Dubai, UAE
+      </h3>
+      <h3 class="h3_home" style="color:#fff;"><a style="color:white" href="https://www2026.thewebconf.org" target="_blank"><b>WWW 2026</b></a> Workshop</h3>
+      <h3 class="h3_home" style="color:#2476f1;font-weight:700;font-style:italic;font-size:40px;">
+        <sup style="font-style: normal">†</sup>Join us for refreshments and conversation throughout the day!
+      </h3>
+    </div>
+  </div>
+</section>
+
+<script>
+  // 等待 hero 图片加载完才移除 preloader（或 6s 超时后强制移除）
+  (function () {
+    const TIMEOUT_MS = 6000;
+    const preloader = document.getElementById('preloader');
+    const heroImg = document.querySelector('.site-hero img');
+
+    // 周期性刷新 preloader-svg 的 src，确保 svg 内部动画重复播放
+    let svgReloadInterval = null;
+    const startSvgReload = () => {
+      const el = document.getElementById('preloader-svg');
+      if (!el) return;
+      svgReloadInterval = setInterval(() => {
+        // 通过添加时间戳强制浏览器重新请求，触发 svg 动画重播
+        el.src = './images/loading.svg?t=' + Date.now();
+      }, 900); // 900ms 可根据 svg 动画时长调整
+    };
+    const stopSvgReload = () => {
+      if (svgReloadInterval) { clearInterval(svgReloadInterval); svgReloadInterval = null; }
+    };
+    // 启动循环重播
+    startSvgReload();
+
+    if (!preloader || !heroImg) {
+      // 找不到元素：移除 preloader 防止卡死
+      preloader && (preloader.classList.add('hidden'), stopSvgReload());
+      return;
+    }
+    let done = false;
+    function reveal() {
+      if (done) return; done = true;
+      preloader.classList.add('hidden');
+      // 停止 svg 循环
+      stopSvgReload();
+      // 小延迟后彻底移除（让过渡完成）
+      setTimeout(() => preloader.remove(), 600);
+    }
+    // 已加载（缓存）时直接 reveal
+    if (heroImg.complete && heroImg.naturalWidth > 0) {
+      reveal();
+    } else {
+      heroImg.addEventListener('load', reveal, { once: true });
+      heroImg.addEventListener('error', reveal, { once: true }); // 出错也不阻塞
+      // 兜底：超时强制显示
+      setTimeout(reveal, TIMEOUT_MS);
+    }
+  })();
+</script>
+  
+  <div id="MathJax_Message" style="display: none;"></div><header class="site-header">
 
   <div class="wrapper"><a class="site-title" rel="author" href="https://www-tfm-causal.github.io/www2026-workshop/">WWW 2026 Workshop - Trustworthy Foundation Models for Web Intelligence: Causal
 Perspectives and Challenges</a><nav class="site-nav">
