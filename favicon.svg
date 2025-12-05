@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" fill="#f58025"/>
+  <g fill="white">
+    <!-- Lock body -->
+    <rect x="10" y="16" width="12" height="10" rx="1"/>
+    <!-- Lock shackle -->
+    <path d="M13 16v-3a3 3 0 0 1 6 0v3" stroke="white" stroke-width="2" fill="none"/>
+    <!-- Keyhole -->
+    <circle cx="16" cy="20" r="1.5"/>
+    <rect x="15.5" y="20" width="1" height="2"/>
+  </g>
+</svg> 
